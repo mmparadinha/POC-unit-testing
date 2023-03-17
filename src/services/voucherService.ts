@@ -10,7 +10,7 @@ export interface VoucherApplyData {
   amount: number;
 }
 
-async function createVoucher(code: string, discount: number) {
+async function createVoucher(code: string, discount: number): Promise<void> {
   const voucher = await voucherRepository.getVoucherByCode(code);
   if (voucher) {
     throw conflictError("Voucher already exist.");
